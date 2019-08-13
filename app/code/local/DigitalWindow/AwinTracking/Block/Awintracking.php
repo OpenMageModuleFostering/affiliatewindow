@@ -27,15 +27,22 @@ class DigitalWindow_AwinTracking_Block_Awintracking extends Mage_Core_Block_Temp
         return $currency_code;
     }
     
-    public function getCookieSource() // Get source parameter from cookie
-    {
-        $keyParam = Mage::getStoreConfig("AwinTracking_options/section_three/param_key");
+    public function getChannel() // Get source parameter from cookie
+    {	
+		
+		if ((int) Mage::getStoreConfig("AwinTracking_options/section_three/enable_dedupe") == 1){
+			$keyParam = Mage::getStoreConfig("AwinTracking_options/section_three/param_key");
         if (isset($keyParam)) {
             $channelParameter = filter_input(INPUT_COOKIE, $keyParam);
             if (isset($channelParameter)) {
                 return $channelParameter;
-            }
+            }else{
+				$defaultValue = Mage::getStoreConfig("AwinTracking_options/section_three/default_value");
+				return $defaultValue;
+				}
+			}
         }
+		return 'aw';
     }
     
     public function getProducts() // Get all products from order object
@@ -190,7 +197,7 @@ class DigitalWindow_AwinTracking_Block_Awintracking extends Mage_Core_Block_Temp
         $imagePixel = NULL;
         $order      = $this->getOrder();
         if ((int) Mage::getStoreConfig('AwinTracking_options/section_one/activate_tracking_code') == 1) {
-            $imagePixel = $imagePixel = '<img border="0" height="0" src="https://www.awin1.com/sread.img?tt=ns&amp;tv=2&amp;merchant=' . $this->getAdvertiserId() . '&amp;amount=' . $this->getAwinAmount($order) . '&amp;ch=' . $this->getCookieSource() . '&amp;cr=' . $this->getCurrency($order) . '&amp;parts=DEFAULT:' . $this->getAwinAmount($order) . '&amp;ref=' . $this->getLastOrderId($order) . '&amp;testmode=' . $this->getTestMode() . '&amp;p1=awinMagento&amp;vc=' . $this->getVoucher($order) . '" style="display: none;" width="0">' . "\n";
+            $imagePixel = $imagePixel = '<img border="0" height="0" src="https://www.awin1.com/sread.img?tt=ns&amp;tv=2&amp;merchant=' . $this->getAdvertiserId() . '&amp;amount=' . $this->getAwinAmount($order) . '&amp;ch=' . $this->getChannel() . '&amp;cr=' . $this->getCurrency($order) . '&amp;parts=DEFAULT:' . $this->getAwinAmount($order) . '&amp;ref=' . $this->getLastOrderId($order) . '&amp;testmode=' . $this->getTestMode() . '&amp;p1=awinMagento&amp;vc=' . $this->getVoucher($order) . '" style="display: none;" width="0">' . "\n";
             return $imagePixel;
         }
         return $imagePixel;
@@ -207,7 +214,7 @@ class DigitalWindow_AwinTracking_Block_Awintracking extends Mage_Core_Block_Temp
                             AWIN.Tracking.Sale = {};
                             /*** Set your transaction parameters ***/
                             AWIN.Tracking.Sale.amount   =  "' . $this->getAwinAmount($order) . '";
-                            AWIN.Tracking.Sale.channel  =  "' . $this->getCookieSource() . '";
+                            AWIN.Tracking.Sale.channel  =  "' . $this->getChannel() . '";
                             AWIN.Tracking.Sale.orderRef =  "' . $this->getLastOrderId($order) . '";
                             AWIN.Tracking.Sale.parts    =  "DEFAULT:' . $this->getAwinAmount($order) . '";
                             AWIN.Tracking.Sale.currency =  "' . $this->getCurrency($order) . '";

@@ -72,7 +72,7 @@
                     <show_in_default>2</show_in_default>
                     <show_in_website>2</show_in_website>
                     <show_in_store>2</show_in_store>  
-                    <comment><![CDATA[<strong>For more information about this plug-in please visit the<a href="http://affiliatewindow.com" target="_blank">Wiki</a></strong>]]></comment>                      
+                    <comment><![CDATA[<strong>For more information about this plug-in please visit the<a href="http://wiki.affiliatewindow.com/index.php/Magento_Plugin" target="_blank">Wiki</a></strong>]]></comment>                      
                     <fields>
                         <merchant_id>
                             <backend_model>DigitalWindow_AwinTracking/System_Config_Backend_MerchantId</backend_model>
