@@ -95,7 +95,18 @@
                             <show_in_store>1</show_in_store>
                             <comment>This setting is established during the integration period.</comment>                 
                             <tooltip>Pay commission inclusive of sale tax, please disucss with your account executive.</tooltip>
-                        </tax_inclusive>  
+                        </tax_inclusive>
+						<commission_group>
+							<label>Set Commission by Client</label>
+							<frontend_type>select</frontend_type>
+							<sort_order>3</sort_order>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>Set 'New' vs 'Existing' Commission type</comment>
+							<tooltip>Pay commission based on client type, new or Existing</tooltip>
+						</commission_group>
                     </fields>
                 </section_two>
                 <section_three translate="label">
