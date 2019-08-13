@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <AwinTracking translate="label" module="AwinTracking">
+            <label>Affiliate Window</label>
+            <sort_order>0</sort_order>
+        </AwinTracking>
+    </tabs>
+    <sections>
+        <AwinTracking_options translate="label" module="AwinTracking">
+            <label>Tracking</label>
+            <tab>AwinTracking</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <section_one translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <activate_tracking_code>
+                            <label>Activate Tracking Code</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable conversion tag</comment>          
+                            <tooltip>Please enable to activate transaction tracking.</tooltip>
+                        </activate_tracking_code>
+                        <plt>
+                            <label>Product Level Tracking</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable product level tracking.</comment>  
+                            <tooltip>Activate advanced product analytics.</tooltip>      
+                            <depends>
+                                <activate_tracking_code>1</activate_tracking_code>
+                            </depends>         
+                        </plt> 
+                        <test_mode>
+                            <label>In Test Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Test enabled transactions cannot be validated.</comment>
+                            <tooltip>Please set to 'No' to allow transaction processing.</tooltip>   
+                            <depends>
+                                <activate_tracking_code>1</activate_tracking_code>
+                            </depends>                
+                        </test_mode>
+                    </fields>
+                </section_one>
+                <section_two translate="label">
+                    <label>Program Specific</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>2</show_in_default>
+                    <show_in_website>2</show_in_website>
+                    <show_in_store>2</show_in_store>  
+                    <comment><![CDATA[<strong>For more information about this plug-in please visit the<a href="http://affiliatewindow.com" target="_blank">Wiki</a></strong>]]></comment>                      
+                    <fields>
+                        <merchant_id>
+                            <backend_model>DigitalWindow_AwinTracking/System_Config_Backend_MerchantId</backend_model>
+                            <label>Merchant ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Please enter your merchant ID.</comment>    
+                            <tooltip>Your Affiliate Window merchant ID</tooltip>               
+                        </merchant_id>
+                        <tax_inclusive>
+                            <label>Commission Includes VAT/Tax</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This setting is established during the integration period.</comment>                 
+                            <tooltip>Pay commission inclusive of sale tax, please disucss with your account executive.</tooltip>
+                        </tax_inclusive>  
+                    </fields>
+                </section_two>
+                <section_three translate="label">
+                    <label>De-duplication</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>3</show_in_default>
+                    <show_in_website>3</show_in_website>
+                    <show_in_store>3</show_in_store>                
+                    <fields>
+                        <enable_dedupe>
+                            <label>Enable De-duplication</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable de-duplication logic.</comment>        
+                            <tooltip>Please consult with your account executive before enabling de-duplication logic.</tooltip>           
+                        </enable_dedupe>
+                        <param_key>
+                            <backend_model>DigitalWindow_AwinTracking/System_Config_Backend_KeyParam</backend_model>
+                            <label>Key Parameter</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The name of the parameter appended to clickthroughs to identify source.</comment> 
+                            <depends>
+                                <enable_dedupe>1</enable_dedupe>
+                            </depends>
+                            <tooltip>The parameter identifying the traffic source.</tooltip>
+                        </param_key>
+                        <cookie_length>
+                            <backend_model>DigitalWindow_AwinTracking/System_Config_Backend_Cookie</backend_model>
+                            <label>Cookie Length</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The length to set the source cookie in days. 30 is highly recommended.</comment>
+                            <depends>
+                                <enable_dedupe>1</enable_dedupe>
+                            </depends>  
+                            <tooltip>Please consult with your account executive before changing this value.</tooltip>
+                        </cookie_length>  
+                        <default_value>
+                            <backend_model>DigitalWindow_AwinTracking/System_Config_Backend_DefaultValue</backend_model>
+                            <label>Default Value</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The default value if no source parameter is provided at clickthrough.</comment>.
+                            <depends>
+                                <enable_dedupe>1</enable_dedupe>
+                            </depends>    
+                            <tooltip>Please consult with your account executive before changing this value.</tooltip>
+                        </default_value>
+                    </fields>
+                </section_three>
+            </groups>                
+        </AwinTracking_options>
+        <AwinTracking_Datafeed translate="label" module="AwinTracking">
+            <label>Product Feed</label>
+            <tab>AwinTracking</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>2</sort_order>
+            <show_in_default>2</show_in_default>
+            <show_in_website>2</show_in_website>
+            <show_in_store>2</show_in_store>
+            <groups>
+                <section_one translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>                
+                    <fields>
+                        <feed_name>
+                            <backend_model>DigitalWindow_AwinTracking/System_Config_Backend_FeedName</backend_model>
+                            <label>Feed Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Please enter a feed name.</comment>     
+                            <tooltip>Recommended: use your merchant ID.</tooltip>              
+                        </feed_name>
+                        <website>
+                            <label>Website</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>DigitalWindow_AwinTracking/System_Config_Store_Id</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Please select your Magento store from the above dropdown.</comment>   
+                        </website>
+                    </fields>
+                </section_one>
+            </groups>                
+        </AwinTracking_Datafeed>
+    </sections>
+</config>

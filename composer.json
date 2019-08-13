@@ -1,0 +1,17 @@
+{
+    "name": "OpenMageModuleFostering/AffiliateWindow",
+    "type": "magento-module",
+    "license": "GNU",
+    "homepage": "",
+    "description": "Affiliate Window's Official Magento Extension.
+One click installation of Affiliate Window's bespoke tracking and datafeed platform.",
+    "authors": [
+    {
+        "name": "Stephen Short",
+        "email": "Stephen.Short@affiliatewindow.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
