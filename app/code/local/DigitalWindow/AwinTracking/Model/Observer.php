@@ -15,7 +15,7 @@ class DigitalWindow_AwinTracking_Model_Observer {
         $_product = array();
         $product_data = array();
         $arr = array();
-        $web_id = Mage::getStoreConfig('AwinTracking_Datafeed/section_one/store');
+        $web_id = Mage::getStoreConfig('AwinTracking_Datafeed/section_one/website');
         $fileName = Mage::getStoreConfig('AwinTracking_Datafeed/section_one/feed_name');
         $fileName = $fileName.'.csv';
         $collection = Mage::getModel('catalog/product')->getCollection()->addWebsiteFilter($web_id)->addAttributeToSelect('*');
@@ -51,7 +51,16 @@ class DigitalWindow_AwinTracking_Model_Observer {
             }else {
                 $product_data['category'] = "";
             }
-            $product_data['image_url']= $product->getImageUrl();
+		
+			try{
+				if($product->getImageUrl()){
+				$product_data['image_url'] = $product->getImageUrl();
+			}
+			}catch(Exception $e){
+				$product_data['image_url'] = "No Image found in Magento Catalogue.";
+			}
+			
+
             $product_data['product_url']=str_replace('pr_magento_exporter.php/','',$product->getProductUrl());
             array_push($arr, $product_data);
         }
