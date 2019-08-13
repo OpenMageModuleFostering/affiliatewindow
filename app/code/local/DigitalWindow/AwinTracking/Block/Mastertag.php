@@ -9,7 +9,7 @@ class DigitalWindow_AwinTracking_Block_Mastertag extends Mage_Core_Block_Templat
 	public function getJourneyTagConfig(){
 		$merchantId = $this->getMid();
 		if($merchantId != 0){
-			$script = "<script type=\"text/javascript\" src=\"https://dwin1.com/".$merchantId.".js\"> </script>"."\n";
+			$script = "<script type=\"text/javascript\" src=\"https://www.dwin1.com/".$merchantId.".js\"> </script>"."\n";
 			return $script;
 		}
 		else{

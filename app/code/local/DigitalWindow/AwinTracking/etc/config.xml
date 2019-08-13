@@ -50,7 +50,7 @@
                 <tax_inclusive>No</tax_inclusive>
                 <currency>Yes</currency>
                 <enable_dedupe>No</enable_dedupe>
-                <default_value>na</default_value>                
+                <default_value>aw</default_value>                
                 <cookie_length>30</cookie_length>
                 <param_key>source</param_key>
             </section_three>      
